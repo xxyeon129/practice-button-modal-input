@@ -3,8 +3,10 @@ import FirstSelect from "./select/FirstSelect";
 import SecondSelect from "./select/SecondSelect";
 
 export default function Select() {
+    // select dropdown option
     const options = ["React", "JAVA", "Spring", "React Native"];
 
+    // option 클릭 시 상태 변경
     const optionClickHandler = (option, setSelect, setOpen) => {
         setSelect(option);
         setOpen(false);
@@ -39,6 +41,6 @@ const SelectContainer = styled.div`
 `;
 
 const SelectContentBox = styled.div`
+    /* 두 Select 배치 설정 */
     display: flex;
-    gap: 1rem;
 `;

@@ -2,15 +2,18 @@ import { useState } from "react";
 import styled from "styled-components";
 
 export default function Input() {
+    // 이름, 가격 Input 상태
     const [name, setName] = useState("");
     const [price, setPrice] = useState("0");
 
+    // 입력한 숫자 3자리 수마다 콤마가 찍히는 로직
     const priceInputHandler = (e) => {
         const priceStr = e.target.value;
         const priceNum = Number(priceStr.replaceAll(",", ""));
         setPrice(priceNum.toLocaleString());
     };
 
+    // 저장 버튼 클릭 시 이벤트
     const btnClickHandler = () => {
         if (name === "") {
             alert("이름과 가격을 입력해주세요.");
@@ -43,6 +46,7 @@ export default function Input() {
 
 const InputContainerStyle = styled.div`
     #price {
+        /* 이름 - 가격 input 간 간격 설정 */
         margin-left: 1.5rem;
     }
 
