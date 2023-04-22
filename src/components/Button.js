@@ -10,7 +10,9 @@ export default function Button() {
         <PrimaryButtons>
           {primary.map((item, index) => (
             <ButtonComponent
-              onClick={() => alert("버튼을 만들어보세요")}
+              onClick={() =>
+                item === "Large Primary Button" && alert("버튼을 만들어보세요")
+              }
               key={index}
               size={item}
               type="primary"
@@ -29,7 +31,9 @@ export default function Button() {
         <NegativeButtons>
           {negative.map((item, index) => (
             <ButtonComponent
-              onClick={() => prompt("어렵나요?")}
+              onClick={() =>
+                item === "Large Negative Button" && prompt("어렵나요?")
+              }
               key={index}
               size={item}
               type="negative"
