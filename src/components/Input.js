@@ -3,12 +3,20 @@ import styled from "styled-components";
 
 export default function Input() {
     const [name, setName] = useState("");
-    const [price, setPrice] = useState("");
+    const [price, setPrice] = useState("0");
 
-    const priceInputHandle = (e) => {
+    const priceInputHandler = (e) => {
         const priceStr = e.target.value;
         const priceNum = Number(priceStr.replaceAll(",", ""));
         setPrice(priceNum.toLocaleString());
+    };
+
+    const btnClickHandler = () => {
+        if (name === "") {
+            alert("이름과 가격을 입력해주세요.");
+        } else {
+            alert(`{ name: ${name}, price: ${price} }`);
+        }
     };
 
     return (
@@ -25,13 +33,9 @@ export default function Input() {
                 <input
                     type="text"
                     value={price}
-                    onChange={priceInputHandle}
+                    onChange={priceInputHandler}
                 ></input>
-                <button
-                    onClick={() => alert(`{ name: ${name}, price: ${price} }`)}
-                >
-                    저장
-                </button>
+                <button onClick={btnClickHandler}>저장</button>
             </InputContainerStyle>
         </>
     );
