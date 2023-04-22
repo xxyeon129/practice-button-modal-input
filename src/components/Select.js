@@ -1,12 +1,8 @@
-import { useState } from "react";
 import styled from "styled-components";
+import FirstSelect from "./select/FirstSelect";
+import SecondSelect from "./select/SecondSelect";
 
 export default function Select() {
-    const [isOpen, setIsOpen] = useState(false);
-    const [secondOpen, setSecondOpen] = useState(false);
-    const [selectOption, setSelectOption] = useState(null);
-    const [selectSecondOption, setSelectSecondOption] = useState(null);
-
     const options = ["React", "JAVA", "Spring", "React Native"];
 
     const optionClickHandler = (option, setSelect, setOpen) => {
@@ -18,56 +14,14 @@ export default function Select() {
         <SelectContainer>
             <h1>Select</h1>
             <SelectContentBox>
-                <SelectWrapperStyle>
-                    <DropdownMain onClick={() => setIsOpen(!isOpen)}>
-                        {selectOption || "React"}
-                        <i class="fa-solid fa-chevron-down"></i>
-                    </DropdownMain>
-                    {isOpen && (
-                        <DropdownListContainer>
-                            <DropdownList>
-                                {options.map((option) => (
-                                    <ListItem
-                                        onClick={() =>
-                                            optionClickHandler(
-                                                option,
-                                                setSelectOption,
-                                                setIsOpen
-                                            )
-                                        }
-                                    >
-                                        {option}
-                                    </ListItem>
-                                ))}
-                            </DropdownList>
-                        </DropdownListContainer>
-                    )}
-                </SelectWrapperStyle>
-                <ShowSelectWrapperStyle>
-                    <DropdownMain onClick={() => setSecondOpen(!secondOpen)}>
-                        {selectSecondOption || "React"}
-                        <i class="fa-solid fa-chevron-down"></i>
-                    </DropdownMain>
-                    {secondOpen && (
-                        <DropdownListContainer>
-                            <DropdownList>
-                                {options.map((option) => (
-                                    <ListItem
-                                        onClick={() =>
-                                            optionClickHandler(
-                                                option,
-                                                setSelectSecondOption,
-                                                setSecondOpen
-                                            )
-                                        }
-                                    >
-                                        {option}
-                                    </ListItem>
-                                ))}
-                            </DropdownList>
-                        </DropdownListContainer>
-                    )}
-                </ShowSelectWrapperStyle>
+                <FirstSelect
+                    options={options}
+                    optionClickHandler={optionClickHandler}
+                />
+                <SecondSelect
+                    options={options}
+                    optionClickHandler={optionClickHandler}
+                />
             </SelectContentBox>
         </SelectContainer>
     );
@@ -79,8 +33,6 @@ const SelectContainer = styled.div`
     border: 3px solid rgb(221, 221, 221);
     border-radius: 1rem;
     padding: 0 2rem;
-    display: flex;
-    flex-direction: column;
 
     overflow: hidden;
     position: static;
@@ -89,63 +41,4 @@ const SelectContainer = styled.div`
 const SelectContentBox = styled.div`
     display: flex;
     gap: 1rem;
-`;
-
-const SelectWrapperStyle = styled.div`
-    display: flex;
-    flex-direction: column;
-    gap: 0.7rem;
-`;
-
-const ShowSelectWrapperStyle = styled.div`
-    display: flex;
-    flex-direction: column;
-    gap: 0.7rem;
-    position: absolute;
-    margin-left: 23.5rem;
-`;
-
-const DropdownMain = styled.div`
-    width: 20rem;
-    padding: 0.8rem 1rem;
-    border: 1px solid rgb(221, 221, 221);
-    border-radius: 0.5rem;
-
-    cursor: pointer;
-
-    display: flex;
-    justify-content: space-between;
-`;
-
-const DropdownListContainer = styled.div`
-    border: 1px solid rgb(221, 221, 221);
-    border-radius: 0.5rem;
-    padding: 0;
-    background-color: white;
-
-    cursor: pointer;
-`;
-
-const DropdownList = styled.ul`
-    list-style: none;
-    padding: 0;
-    margin: 0;
-`;
-
-const ListItem = styled.li`
-    padding: 1rem 0.9rem;
-
-    :first-child {
-        border-top-right-radius: 0.5rem;
-        border-top-left-radius: 0.5rem;
-    }
-
-    :last-child {
-        border-bottom-left-radius: 0.5rem;
-        border-bottom-right-radius: 0.5rem;
-    }
-
-    :hover {
-        background-color: rgb(221, 221, 221);
-    }
 `;
