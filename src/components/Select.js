@@ -19,6 +19,7 @@ export default function Select() {
                 <SelectWrapperStyle>
                     <DropdownMain onClick={() => setIsOpen(!isOpen)}>
                         {selectOption || "React"}
+                        <i class="fa-solid fa-chevron-down"></i>
                     </DropdownMain>
                     {isOpen && (
                         <DropdownListContainer>
@@ -91,6 +92,8 @@ const DropdownMain = styled.div`
     border: 1px solid rgb(221, 221, 221);
     border-radius: 0.5rem;
     cursor: pointer;
+    display: flex;
+    justify-content: space-between;
 `;
 
 const DropdownListContainer = styled.div`
