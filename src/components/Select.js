@@ -43,7 +43,7 @@ export default function Select() {
                         </DropdownListContainer>
                     )}
                 </SelectWrapperStyle>
-                <SelectWrapperStyle>
+                <ShowSelectWrapperStyle>
                     <DropdownMain onClick={() => setSecondOpen(!secondOpen)}>
                         {selectSecondOption || "React"}
                         <i class="fa-solid fa-chevron-down"></i>
@@ -67,7 +67,7 @@ export default function Select() {
                             </DropdownList>
                         </DropdownListContainer>
                     )}
-                </SelectWrapperStyle>
+                </ShowSelectWrapperStyle>
             </SelectContentBox>
         </SelectContainer>
     );
@@ -75,13 +75,15 @@ export default function Select() {
 
 const SelectContainer = styled.div`
     margin-top: 2.5rem;
-    height: 13rem;
+    height: 15rem;
     border: 3px solid rgb(221, 221, 221);
     border-radius: 1rem;
     padding: 0 2rem;
     display: flex;
     flex-direction: column;
-    /* overflow: hidden; */
+
+    overflow: hidden;
+    position: static;
 `;
 
 const SelectContentBox = styled.div`
@@ -93,6 +95,14 @@ const SelectWrapperStyle = styled.div`
     display: flex;
     flex-direction: column;
     gap: 0.7rem;
+`;
+
+const ShowSelectWrapperStyle = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+    position: absolute;
+    margin-left: 23.5rem;
 `;
 
 const DropdownMain = styled.div`
