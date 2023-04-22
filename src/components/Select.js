@@ -3,13 +3,15 @@ import styled from "styled-components";
 
 export default function Select() {
     const [isOpen, setIsOpen] = useState(false);
+    const [secondOpen, setSecondOpen] = useState(false);
     const [selectOption, setSelectOption] = useState(null);
+    const [selectSecondOption, setSelectSecondOption] = useState(null);
 
     const options = ["React", "JAVA", "Spring", "React Native"];
 
-    const optionClickHandler = (option) => {
-        setSelectOption(option);
-        setIsOpen(false);
+    const optionClickHandler = (option, setSelect, setOpen) => {
+        setSelect(option);
+        setOpen(false);
     };
 
     return (
@@ -27,7 +29,11 @@ export default function Select() {
                                 {options.map((option) => (
                                     <ListItem
                                         onClick={() =>
-                                            optionClickHandler(option)
+                                            optionClickHandler(
+                                                option,
+                                                setSelectOption,
+                                                setIsOpen
+                                            )
                                         }
                                     >
                                         {option}
@@ -38,15 +44,29 @@ export default function Select() {
                     )}
                 </SelectWrapperStyle>
                 <SelectWrapperStyle>
-                    {/* <select>
-                        <option value="" selected>
-                            리액트
-                        </option>
-                        <option>리액트</option>
-                        <option>자바</option>
-                        <option>스프링</option>
-                        <option>리액트 네이티브</option>
-                    </select> */}
+                    <DropdownMain onClick={() => setSecondOpen(!secondOpen)}>
+                        {selectSecondOption || "React"}
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </DropdownMain>
+                    {secondOpen && (
+                        <DropdownListContainer>
+                            <DropdownList>
+                                {options.map((option) => (
+                                    <ListItem
+                                        onClick={() =>
+                                            optionClickHandler(
+                                                option,
+                                                setSelectSecondOption,
+                                                setSecondOpen
+                                            )
+                                        }
+                                    >
+                                        {option}
+                                    </ListItem>
+                                ))}
+                            </DropdownList>
+                        </DropdownListContainer>
+                    )}
                 </SelectWrapperStyle>
             </SelectContentBox>
         </SelectContainer>
@@ -66,24 +86,13 @@ const SelectContainer = styled.div`
 
 const SelectContentBox = styled.div`
     display: flex;
+    gap: 1rem;
 `;
 
 const SelectWrapperStyle = styled.div`
     display: flex;
     flex-direction: column;
-    gap: 1rem;
-
-    select {
-        /* css 설정 초기화 */
-        -moz-appearance: none;
-        -webkit-appearance: none;
-        appearance: none;
-
-        width: 20rem;
-        padding: 0.8rem 1rem;
-        border: 1px solid rgb(221, 221, 221);
-        border-radius: 0.5rem;
-    }
+    gap: 0.7rem;
 `;
 
 const DropdownMain = styled.div`
@@ -91,7 +100,9 @@ const DropdownMain = styled.div`
     padding: 0.8rem 1rem;
     border: 1px solid rgb(221, 221, 221);
     border-radius: 0.5rem;
+
     cursor: pointer;
+
     display: flex;
     justify-content: space-between;
 `;
@@ -101,6 +112,7 @@ const DropdownListContainer = styled.div`
     border-radius: 0.5rem;
     padding: 0;
     background-color: white;
+
     cursor: pointer;
 `;
 
