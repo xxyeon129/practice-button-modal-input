@@ -2,6 +2,7 @@ import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
   button {
+    cursor: pointer;
     border-radius: 0.5rem;
     border: none;
     background-color: #55EFC4;
