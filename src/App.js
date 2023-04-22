@@ -5,15 +5,15 @@ import Input from "./components/Input";
 import Select from "./components/Select";
 
 function App() {
-    return (
-        <div>
-            <GlobalStyle />
-            <Modal />
-            <Button />
-            <Input />
-            <Select />
-        </div>
-    );
+  return (
+    <div>
+      <GlobalStyle />
+      <Modal />
+      <Button />
+      <Input />
+      <Select />
+    </div>
+  );
 }
 
 export default App;
