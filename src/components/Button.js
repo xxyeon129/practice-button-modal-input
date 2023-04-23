@@ -66,7 +66,7 @@ const ButtonText = styled.h1`
   margin-inline-end: 0px;
   font-weight: bold;
 `;
-const ButtonComponent = styled.button`
+export const ButtonComponent = styled.button`
   padding: 1px 6px;
   ${(props) =>
     props.size === "Large Primary Button" ||

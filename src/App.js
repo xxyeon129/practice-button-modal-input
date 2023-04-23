@@ -8,9 +8,9 @@ function App() {
   return (
     <div>
       <GlobalStyle />
-      <Modal />
       <Button />
       <Input />
+      <Modal />
       <Select />
     </div>
   );
