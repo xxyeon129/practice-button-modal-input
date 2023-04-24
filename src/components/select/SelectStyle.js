@@ -15,6 +15,7 @@ export const ShowSelectWrapper = styled.div`
     gap: 0.7rem;
     position: absolute;
     margin-left: 23.5rem;
+    z-index: 1;
 `;
 
 // select 클릭하지 않았을 경우 보이는 default select
